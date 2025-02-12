@@ -9,7 +9,7 @@ import FormPresupuesto from "./FormPresupuesto.jsx";
 import { useState, useEffect } from "react";
 
 
-const Column1 = ({ data, totalGastado }) => {
+const ColumncircularBar = ({ data, totalGastado }) => {
   const [presupuesto, setPresupuesto] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [transaccionesReciente, setTransaccionesRecientes] = useState([]);
@@ -223,4 +223,4 @@ const Column1 = ({ data, totalGastado }) => {
   );
 };
 
-export default Column1;
+export default ColumncircularBar;

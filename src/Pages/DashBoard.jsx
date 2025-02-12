@@ -11,7 +11,7 @@ import ListExpenses from "../Components/ListExpenses.jsx";
 import ExpenseCard from "../Components/ExpenseCard.jsx";
 import GridCategoria from "../Components/GridCategoria.jsx";
 // import Column1 from "../Components/column1.jsx";
-import Column1 from "../Components/column1.jsx";
+import ColumncircularBar from "../Components/column1.jsx";
 import FormPresupuesto from "../Components/FormPresupuesto.jsx";
 import Column2 from "../Components/Column2.jsx";
 import NewExpenseForm from "../Components/NewExpenseForm.jsx";
@@ -84,7 +84,7 @@ const DashBoard = ({}) => {
 
   return (
     <div className="md:grid grid-cols-3 h-screen gap-20">
-      <Column1 data={data} totalGastado={totalGastado} />
+      <ColumncircularBar data={data} totalGastado={totalGastado} />
       <Column2 setCategoriasTotales = {setCategoriasTotales} />
       
       <Columna3 
