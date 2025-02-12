@@ -1,8 +1,9 @@
-import "./App.css";
+import "./index.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AuthProvider from "./contextApi/AuthProvider";
 import UserProvider from "./contextApi/UserProvider.jsx";
+
 
 /**IMPORT COMPONENTS STARTS */
 import Navbar from "./Components/Navbar";
