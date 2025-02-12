@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
     const [email, setEmail] = useState('')
@@ -110,6 +110,7 @@ const ResetPassword = () => {
               Obtener Enlace
             </button>
           </div>
+          <Link to={'/login'} className="btn btn-outline btn-error mt-3">Cancelar</Link>
         </form>
       </div>
   </div>

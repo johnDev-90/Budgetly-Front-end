@@ -10,6 +10,7 @@ import "react-circular-progressbar/dist/styles.css";
 import ListExpenses from "../Components/ListExpenses.jsx";
 import ExpenseCard from "../Components/ExpenseCard.jsx";
 import GridCategoria from "../Components/GridCategoria.jsx";
+// import Column1 from "../Components/column1.jsx";
 import Column1 from "../Components/column1.jsx";
 import FormPresupuesto from "../Components/FormPresupuesto.jsx";
 import Column2 from "../Components/Column2.jsx";

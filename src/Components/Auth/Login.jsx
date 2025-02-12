@@ -19,13 +19,16 @@ const Login = ({ setuser }) => {
   async function hanldeSubmit(e) {
     e.preventDefault();
 
-    if (!email || !password) {
+    if (email === '' || password === '') {
       Swal.fire({
         text: "Todos los campos son obligatorios",
         icon: "error",
       });
       return;
     }
+
+    console.log(email)
+    console.log(password)
 
     const userCredentials = { email, password };
 
@@ -34,10 +37,10 @@ const Login = ({ setuser }) => {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type":"application/json",
         },
-        credentials: "include",
         body: JSON.stringify(userCredentials),
+        credentials:"include",
       });
 
       const result = await response.json();

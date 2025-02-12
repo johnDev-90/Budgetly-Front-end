@@ -32,6 +32,8 @@ const Register = () => {
     // formData.append("file", fileName);
     const data = Object.fromEntries(formData.entries());
 
+    console.log(import.meta.env.VITE_API_URL)
+
   
 
     if (Object.values(data).includes("")) {
@@ -44,6 +46,7 @@ const Register = () => {
         method: "POST",
 
         body: formData,
+
       });
 
       const response = await result.json();
