@@ -7,13 +7,15 @@ import { useUser } from "../contextApi/UserProvider.jsx";
 
 const Private = ({ children }) => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  const [isLoading, setIsLoading] = useState(true); // Estado para rastrear si estamos verificando la autenticación.
-
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
+  const hasAuthenticated = useRef(false); // Evita ejecuciones repetidas
 
   useEffect(() => {
-    authenticateUser();
-  }, [setIsAuthenticated, user]);
+    if (!hasAuthenticated.current) {
+      authenticateUser();
+      hasAuthenticated.current = true;
+    }
+  }, []);
 
   async function authenticateUser() {
     try {
