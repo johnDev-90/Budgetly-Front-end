@@ -6,7 +6,7 @@ import { useUser } from "../contextApi/UserProvider.jsx";
 
 const Private = ({ children }) => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  const { user, setUser } = useUser();
+  const {setUser } = useUser();
   const [isLoading, setIsLoading] = useState(true);
 
   // ✅ Memorizar la función para que no se recree en cada render
@@ -47,7 +47,7 @@ const Private = ({ children }) => {
   // ✅ Ejecutar `authenticateUser` solo al montar el componente
   useEffect(() => {
     authenticateUser();
-  }, [authenticateUser, user]); // Se ejecuta solo si `authenticateUser` cambia (lo que no pasará debido a `useCallback`)
+  }, [authenticateUser]); // Se ejecuta solo si `authenticateUser` cambia (lo que no pasará debido a `useCallback`)
 
   if (isLoading) {
     return <div>Cargando...</div>;
