@@ -3,118 +3,109 @@ import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
-    const [email, setEmail] = useState('')
+  const [email, setEmail] = useState("");
 
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-   
-    async function enviarLink(e) {
+  async function enviarLink(e) {
+    e.preventDefault();
 
-        e.preventDefault();
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      
-       if (!regex.test(email)) {
-        Swal.fire({
-            text: "Correo electronico No valido!",
-            icon: "error"
-          });
-       }
-
-       if (email === '') {
-        Swal.fire({
-            text: "Nececitas ingresar un correo electronico",
-            icon: "error"
-          });
-        
-       }
-
-       
-
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/resetPassword`,{
-            method:'POST',
-            headers:{
-                'Content-type':'application/json',
-            },body:JSON.stringify({email}),
-            credentials:'include'
-        
-        })
-         const restul = await response.json()
-        console.log(response)
-        console.log(restul)
-
-        if (response.ok) {
-    
-            Swal.fire({
-                text: restul.message,
-                icon: "success"
-              }).then(() => {
-                navigate('/login');
-              })
-              
-            return
-        }
-
-        Swal.fire({
-            text: restul.message,
-            icon: "error"
-          })
-
-      
-
-      } catch (error) {
-        console.log(error)
-      }
-
-
-        
+    if (!regex.test(email)) {
+      Swal.fire({
+        text: "Correo electronico No valido!",
+        icon: "error",
+      });
     }
 
+    if (email === "") {
+      Swal.fire({
+        text: "Nececitas ingresar un correo electronico",
+        icon: "error",
+      });
+    }
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/resetPassword`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+          credentials: "include",
+        },
+      );
+      const restul = await response.json();
+
+      if (response.ok) {
+        Swal.fire({
+          text: restul.message,
+          icon: "success",
+        }).then(() => {
+          navigate("/login");
+        });
+
+        return;
+      }
+
+      Swal.fire({
+        text: restul.message,
+        icon: "error",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
-  <div className="w-full">
-    <div className="text-center mt-12 flex flex-col items-center gap-4 p-4">
-    <svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  fill="currentColor"
-  width="30"
-  height="30"
->
-  <path
-    d="M12 2C9.24 2 7 4.24 7 7V10H6C4.9 10 4 10.9 4 12V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V12C20 10.9 19.1 10 18 10H17V7C17 4.24 14.76 2 12 2ZM9 7C9 5.34 10.34 4 12 4C13.66 4 15 5.34 15 7V10H9V7ZM12 14C13.1 14 14 14.9 14 16C14 16.78 13.59 17.47 13 17.87V19C13 19.55 12.55 20 12 20C11.45 20 11 19.55 11 19V17.87C10.41 17.47 10 16.78 10 16C10 14.9 10.9 14 12 14Z"
-  />
-</svg>
+    <div className="w-full">
+      <div className="text-center mt-12 flex flex-col items-center gap-4 p-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          width="30"
+          height="30"
+        >
+          <path d="M12 2C9.24 2 7 4.24 7 7V10H6C4.9 10 4 10.9 4 12V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V12C20 10.9 19.1 10 18 10H17V7C17 4.24 14.76 2 12 2ZM9 7C9 5.34 10.34 4 12 4C13.66 4 15 5.34 15 7V10H9V7ZM12 14C13.1 14 14 14.9 14 16C14 16.78 13.59 17.47 13 17.87V19C13 19.55 12.55 20 12 20C11.45 20 11 19.55 11 19V17.87C10.41 17.47 10 16.78 10 16C10 14.9 10.9 14 12 14Z" />
+        </svg>
 
         <h2 className="text-xl">¿Olvidaste tu contraseña?</h2>
-        <p className="mt-4 w-[20rem]">Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
-    </div>
+        <p className="mt-4 w-[20rem]">
+          Ingresa tu correo electrónico y te enviaremos un enlace para
+          restablecer tu contraseña.
+        </p>
+      </div>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto ">
-        
         <form
-        onSubmit={(e) => enviarLink(e) }
-        className="card-body w-full  mt-4">
+          onSubmit={(e) => enviarLink(e)}
+          className="card-body w-full  mt-4"
+        >
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
             </label>
             <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="email" className="input input-bordered"  />
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="email"
+              className="input input-bordered"
+            />
           </div>
-        
+
           <div className="form-control mt-6">
-            <button className="btn btn-primary">
-              Obtener Enlace
-            </button>
+            <button className="btn btn-primary">Obtener Enlace</button>
           </div>
-          <Link to={'/login'} className="btn btn-outline btn-error mt-3">Cancelar</Link>
+          <Link to={"/login"} className="btn btn-outline btn-error mt-3">
+            Cancelar
+          </Link>
         </form>
       </div>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
-export default ResetPassword
+export default ResetPassword;

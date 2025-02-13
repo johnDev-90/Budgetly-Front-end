@@ -11,17 +11,12 @@ const Profile = () => {
 
   const [avatar, setAvatar] = useState(user.imageUrl);
 
-
-
-
   function controlCambiodeImg(e) {
-   
-
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setAvatar(reader.result); 
+        setAvatar(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -31,8 +26,6 @@ const Profile = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     formData.append("userId", user.userId);
-
-
 
     try {
       const result = await fetch(
@@ -61,49 +54,44 @@ const Profile = () => {
     }
   }
 
-async function deleteimg(avatar) {
+  async function deleteimg(avatar) {
+    const url = avatar;
 
-  const url = avatar
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_API_URL}/deleteImg`,
+            {
+              method: "DELETE",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify({ url: avatar }),
+              credentials: "include",
+            },
+          );
 
-
-
-
-  Swal.fire({
-    title: "Are you sure?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, delete it!"
-  }).then(async (result) => {
-    if (result.isConfirmed) {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/deleteImg`,{
-          method:'DELETE',
-          headers:{
-            'Content-type':'application/json'
-          },
-          body:JSON.stringify({url:avatar}),
-          credentials:'include'
-        })
-    
-        const result = await response.json()
-        
-      } catch (error) {
-        console.log(error)
+          const result = await response.json();
+        } catch (error) {
+          console.log(error);
+        }
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
       }
-      Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
-        icon: "success"
-      });
-    }
-  });
-
- 
-  
-}
+    });
+  }
 
   return (
     <div className="absolute w-full md:relative md:flex items-center justify-center min-h-screen">
@@ -130,9 +118,10 @@ async function deleteimg(avatar) {
                   Cambiar imagen
                 </button>
                 <button
-                
-                onClick={(e) => deleteimg(avatar)}
-                type="button" className="btn btn-secondary p-2">
+                  onClick={(e) => deleteimg(avatar)}
+                  type="button"
+                  className="btn btn-secondary p-2"
+                >
                   Borrar Imagen
                 </button>
                 <input
@@ -197,7 +186,9 @@ async function deleteimg(avatar) {
             >
               Guardar
             </button>
-            <Link to={'/dashboard'} className="btn btn-ghost w-full text-lg">Cancelar</Link>
+            <Link to={"/dashboard"} className="btn btn-ghost w-full text-lg">
+              Cancelar
+            </Link>
           </div>
         </form>
       </div>

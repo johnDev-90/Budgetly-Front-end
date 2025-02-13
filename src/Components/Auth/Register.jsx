@@ -29,12 +29,9 @@ const Register = () => {
 
     const formData = new FormData(e.target);
 
-    // formData.append("file", fileName);
     const data = Object.fromEntries(formData.entries());
 
-    console.log(import.meta.env.VITE_API_URL)
 
-  
 
     if (Object.values(data).includes("")) {
       Swal.fire({
@@ -76,8 +73,8 @@ const Register = () => {
 
   return (
     <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content w-3/4">
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <div className="hero-content w-full">
+        <div className="card shadow-2xl">
           <form
             onSubmit={(e) => hanldeSubmit(e)}
             type="submit"

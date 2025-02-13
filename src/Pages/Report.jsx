@@ -127,7 +127,11 @@ const Report = () => {
           </div>
         </div>
 
-        <button disabled={gastos.length > 0? false : true} onClick={handleExport} className="btn roun btn-success mt-4">
+        <button
+          disabled={gastos.length > 0 ? false : true}
+          onClick={handleExport}
+          className="btn roun btn-success mt-4"
+        >
           Exportar Excel
         </button>
       </div>

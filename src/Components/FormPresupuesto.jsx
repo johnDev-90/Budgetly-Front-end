@@ -46,10 +46,12 @@ const FormPresupuesto = () => {
 
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-40">
-      <form   onSubmit={(e) => handleSubmit(e)} className="card-body">
+      <form onSubmit={(e) => handleSubmit(e)} className="card-body">
         <div className="form-control">
           <label className="label">
-            <span className="label-text text-lg mx-auto font-bold">Digite su presupuesto</span>
+            <span className="label-text text-lg mx-auto font-bold">
+              Digite su presupuesto
+            </span>
           </label>
           <input
             onChange={(e) => setPresupuesto(+e.target.value)}
@@ -60,7 +62,9 @@ const FormPresupuesto = () => {
         </div>
 
         <div className="form-control mt-6">
-          <button id="presupuestoForm" className="btn btn-primary">Guarda Presupuesto</button>
+          <button id="presupuestoForm" className="btn btn-primary">
+            Guarda Presupuesto
+          </button>
         </div>
         <div className="form-control mt-2">
           <Link to={"/dashboard"} className="btn ">

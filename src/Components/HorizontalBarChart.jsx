@@ -11,7 +11,14 @@ import {
 import { Bar } from "react-chartjs-2";
 
 // Registrar los componentes de Chart.js
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+);
 
 const HorizontalBarChart = ({ categoriasTotales }) => {
   const [gastos, setGastos] = useState([]);
@@ -81,10 +88,10 @@ const HorizontalBarChart = ({ categoriasTotales }) => {
   ];
 
   const datosActuales = categorias.map(
-    (categoria) => categoriasActuales[categoria] || 0
+    (categoria) => categoriasActuales[categoria] || 0,
   );
   const datosPasados = categorias.map(
-    (categoria) => categoriasPasadas[categoria] || 0
+    (categoria) => categoriasPasadas[categoria] || 0,
   );
 
   const datos = {
@@ -121,8 +128,8 @@ const HorizontalBarChart = ({ categoriasTotales }) => {
     <div
       className={
         categorias.length > 0
-            ? "mt-[5rem] w-full text-center h-[30rem] md:mt-12"
-      : "mt-16 w-full text-center h-[30rem] p-8 md:mt-12"
+          ? "mt-[5rem] w-full text-center h-[30rem] md:mt-12"
+          : "mt-16 w-full text-center h-[30rem] p-8 md:mt-12"
       }
     >
       <h2>Comparativa de Gastos por Categoría</h2>

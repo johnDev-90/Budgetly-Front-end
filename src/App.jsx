@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import AuthProvider from "./contextApi/AuthProvider";
 import UserProvider from "./contextApi/UserProvider.jsx";
 
-
 /**IMPORT COMPONENTS STARTS */
 import Navbar from "./Components/Navbar";
 import Login from "./Components/Auth/Login";
@@ -35,7 +34,6 @@ function App() {
     <div>
       <AuthProvider>
         <UserProvider>
-   
           <Router>
             <Layout user={user}>
               <Routes>
@@ -44,7 +42,7 @@ function App() {
 
                 <Route path="/register" element={<Register />} />
                 <Route path="/forgotPassword" element={<ResetPassword />} />
-                <Route path="/passwordreset" element={<SetnewPasswordForm />}/>
+                <Route path="/passwordreset" element={<SetnewPasswordForm />} />
                 <Route
                   path="/profile"
                   element={
@@ -102,7 +100,7 @@ function App() {
                     </Private>
                   }
                 />
-                  <Route
+                <Route
                   path="/dashboard/transacciones"
                   element={
                     <Private>
@@ -121,11 +119,6 @@ function App() {
               </Routes>
             </Layout>
           </Router>
-
-
-
-
-          
         </UserProvider>
       </AuthProvider>
     </div>

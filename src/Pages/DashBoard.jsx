@@ -18,16 +18,13 @@ import GastosComparativa from "../Components/GastosComparativa.jsx";
 import HorizontalBarChart from "../Components/HorizontalBarChart.jsx";
 import Columna3 from "../Components/Columna3.jsx";
 
-
 //**IMPORT COMPONENTS END */
 
 const DashBoard = ({}) => {
   const [data, setData] = useState({});
   const [gastos, setGastos] = useState([]);
   const [totalGastado, setTotalGAstado] = useState(0);
-  const [categoriasTotales, setCategoriasTotales] = useState([])
-
-  console.log(categoriasTotales);
+  const [categoriasTotales, setCategoriasTotales] = useState([]);
 
   useEffect(() => {
     getPresupuesto();
@@ -84,15 +81,9 @@ const DashBoard = ({}) => {
   return (
     <div className="md:grid grid-cols-3 h-screen gap-20">
       <ColumncircularBar data={data} totalGastado={totalGastado} />
-      <Column2 setCategoriasTotales = {setCategoriasTotales} />
-      
-      <Columna3 
-      gastos = {gastos}
-      categoriasTotales = {categoriasTotales}
-      />
-      
-     
-     
+      <Column2 setCategoriasTotales={setCategoriasTotales} />
+
+      <Columna3 gastos={gastos} categoriasTotales={categoriasTotales} />
     </div>
   );
 };

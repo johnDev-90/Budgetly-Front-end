@@ -33,11 +33,8 @@ const EditForm = () => {
         const result = await response.json();
 
         if (!response.ok) {
-   
           return;
         }
-
-
 
         setCategoria(result.categoria);
         setDescription(result.description);
@@ -77,8 +74,6 @@ const EditForm = () => {
       return;
     }
 
-
-
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/gasto/update/${gastoId}`,
@@ -117,9 +112,7 @@ const EditForm = () => {
 
         navigate("/dashboard/expenses");
       });
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 
   return (

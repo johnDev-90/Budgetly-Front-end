@@ -74,9 +74,7 @@ const Menu = () => {
               Dashboard
             </Link>
           </li>
-          <li>
-        
-          </li>
+          <li></li>
           <li>
             <Link to={"/dashboard/expenses"} onClick={() => setIsOpen(false)}>
               <svg
@@ -97,10 +95,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/dashboard/report"}
-             onClick={() => setIsOpen(false)}
-            >
-           
+            <Link to={"/dashboard/report"} onClick={() => setIsOpen(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-7 w-7"
@@ -120,24 +115,23 @@ const Menu = () => {
           </li>
 
           <li>
-            <Link to={"/dashboard/transacciones"}
-             onClick={() => setIsOpen(false)}
+            <Link
+              to={"/dashboard/transacciones"}
+              onClick={() => setIsOpen(false)}
             >
-           
-           <svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="1.5"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  class="w-6 h-6"
->
-  <path d="M3 12a9 9 0 1 1 9 9" />
-  <path d="M3 12H7M12 7v5l4 2" />
-</svg>
-
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                class="w-6 h-6"
+              >
+                <path d="M3 12a9 9 0 1 1 9 9" />
+                <path d="M3 12H7M12 7v5l4 2" />
+              </svg>
               Transacciones
             </Link>
           </li>

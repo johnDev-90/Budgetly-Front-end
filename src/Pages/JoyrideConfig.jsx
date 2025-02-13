@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
-import Joyride from 'react-joyride';
+import React, { createContext, useContext, useState } from "react";
+import Joyride from "react-joyride";
 
 // Crear el contexto
 const JoyrideContext = createContext();
@@ -12,23 +12,23 @@ export const JoyrideProvider = ({ children }) => {
 
   const steps = [
     {
-      target: '#addPresupuesto',
-      content: 'Haz clic aquí para agregar un presupuesto.',
+      target: "#addPresupuesto",
+      content: "Haz clic aquí para agregar un presupuesto.",
     },
     {
-      target: '#presupuestoForm',
-      content: 'Completa el formulario y guarda tu presupuesto.',
+      target: "#presupuestoForm",
+      content: "Completa el formulario y guarda tu presupuesto.",
     },
   ];
 
   const handleJoyrideCallback = (data) => {
     const { index, action, status } = data;
 
-    if (status === 'finished' || status === 'skipped') {
+    if (status === "finished" || status === "skipped") {
       setRun(false); // Finaliza el recorrido
     }
 
-    if (action === 'next') {
+    if (action === "next") {
       setCurrentStep(index + 1); // Avanza al siguiente paso
       if (index === 0) {
         setShowPresupuesto(true); // Muestra el segundo componente
@@ -68,4 +68,3 @@ export const JoyrideProvider = ({ children }) => {
 
 // Hook para usar el contexto
 export const useJoyride = () => useContext(JoyrideContext);
-

@@ -8,13 +8,10 @@ import FormPresupuesto from "./FormPresupuesto.jsx";
 
 import { useState, useEffect } from "react";
 
-
 const ColumncircularBar = ({ data, totalGastado }) => {
   const [presupuesto, setPresupuesto] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [transaccionesReciente, setTransaccionesRecientes] = useState([]);
-
-
 
   useEffect(() => {
     if (data.length > 0) {
@@ -70,49 +67,47 @@ const ColumncircularBar = ({ data, totalGastado }) => {
       <div className="w-100  flex justify-center ">
         <div style={{ width: "20rem", height: "20rem" }}>
           {" "}
-      
-          {presupuesto > 0 ? (<CircularProgressbar
-            value={percentage}
-            styles={buildStyles({
-              pathColor:
-                percentage > 80
-                  ? "#f76c6c" 
-                  : percentage > 50
-                    ? "#ffd56b" 
-                    : "#85e085", 
-              trailColor: "#d3d3d3",
-              textSize: "12px",
-              textColor:
-                percentage > 80
-                  ? "#f76c6c"
-                  : percentage > 50
-                    ? "#ffd56b"
-                    : "#85e085",
-            })}
-            text={`${percentage}%`}
-          />):(
-
+          {presupuesto > 0 ? (
+            <CircularProgressbar
+              value={percentage}
+              styles={buildStyles({
+                pathColor:
+                  percentage > 80
+                    ? "#f76c6c"
+                    : percentage > 50
+                      ? "#ffd56b"
+                      : "#85e085",
+                trailColor: "#d3d3d3",
+                textSize: "12px",
+                textColor:
+                  percentage > 80
+                    ? "#f76c6c"
+                    : percentage > 50
+                      ? "#ffd56b"
+                      : "#85e085",
+              })}
+              text={`${percentage}%`}
+            />
+          ) : (
             <div className="w-full flex text-center items-center justify-center">
-                             <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke="currentColor"
-    className="w-10 h-10 animate-bounce"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-    />
-  </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-10 h-10 animate-bounce"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                />
+              </svg>
             </div>
-
           )}
           <Link
-         
-             id={"addPresupuesto"}
+            id={"addPresupuesto"}
             className="flex flex-row w-60 mx-auto p-3 bg-blue-500 rounded-lg gap-4 text-center justify-center items-center text-white mt-4 font-bold"
             to={"/presupuesto"}
           >
@@ -201,24 +196,17 @@ const ColumncircularBar = ({ data, totalGastado }) => {
                             {formatearDinero(transaction.presupuesto)}
                           </p>
                         </div>
-                        
                       </div>
-                      
                     ),
                   )
                 ) : (
                   <h1>No hay transacciones de hoy</h1>
                 )}
-                
               </div>
-             
             </div>
           </div>
-          
         </div>
-        
       </div>
-      
     </div>
   );
 };

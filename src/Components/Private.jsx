@@ -7,15 +7,18 @@ import { useUser } from "../contextApi/UserProvider.jsx";
 const Private = ({ children }) => {
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   const { setUser } = useUser();
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(true);
 
   // ✅ Memorizar la función para que no se recree en cada render
   const authenticateUser = useCallback(async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/authenticate`, {
-        method: "GET",
-        credentials: "include",
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/authenticate`,
+        {
+          method: "GET",
+          credentials: "include",
+        },
+      );
 
       if (!response.ok) {
         setIsAuthenticated(false);

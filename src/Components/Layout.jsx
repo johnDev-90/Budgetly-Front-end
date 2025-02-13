@@ -21,7 +21,6 @@ const Layout = ({ children, user }) => {
           {children}
         </div>
       </main>
-     
     </div>
   );
 };

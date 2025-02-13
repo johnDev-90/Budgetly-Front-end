@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { formatearDinero } from "../helpers/FormatMoney.js";
 import CardTotalCate from "./CardTotalCate.jsx";
 
-const Column2 = ({setCategoriasTotales}) => {
+const Column2 = ({ setCategoriasTotales }) => {
   const [loading, setLoading] = useState(false);
   const [gastos, setGastos] = useState([]); // Datos filtrados
   const [gastosOriginales, setGastosOriginales] = useState([]); // Datos originales
@@ -11,8 +11,6 @@ const Column2 = ({setCategoriasTotales}) => {
   const [clearFilter, setClearFilter] = useState(false);
 
   const [groups, setGroups] = useState({});
-
-
 
   useEffect(() => {
     getGastos();
@@ -59,13 +57,9 @@ const Column2 = ({setCategoriasTotales}) => {
     const totalesPorCategoria = gastos.reduce((acc, gasto) => {
       const { categoria, monto } = gasto;
 
-      console.log(gasto)
-
- 
       if (!acc[categoria]) {
         acc[categoria] = 0;
       }
-
 
       acc[categoria] += Number(monto);
 
@@ -80,7 +74,7 @@ const Column2 = ({setCategoriasTotales}) => {
     );
 
     setGroups(resultado);
-    setCategoriasTotales(resultado)
+    setCategoriasTotales(resultado);
   }
 
   return (

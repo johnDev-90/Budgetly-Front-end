@@ -12,7 +12,15 @@ import {
 } from "chart.js";
 
 // Registrar los componentes de Chart.js
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
 
 const GastosComparativa = ({ gastos }) => {
   console.log("Gastos originales:", gastos);
@@ -53,11 +61,24 @@ const GastosComparativa = ({ gastos }) => {
   const totalGastosMesActual = calcularTotalGastos(gastosMesActual);
   const totalGastosMesPasado = calcularTotalGastos(gastosMesPasado);
 
-  console.log(totalGastosMesActual)
+  console.log(totalGastosMesActual);
 
   // Datos para la gráfica
   const datos = {
-    labels: ["Enero", "Febrero", "Marzo","Abril", "Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"], // Etiquetas de los meses
+    labels: [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ], // Etiquetas de los meses
     datasets: [
       {
         label: "Gastos Mes pasado",
@@ -68,7 +89,7 @@ const GastosComparativa = ({ gastos }) => {
       },
       {
         label: "Gastos mMs Actual",
-        data: [0,totalGastosMesActual], // Solo se registra en enero
+        data: [0, totalGastosMesActual], // Solo se registra en enero
         fill: false,
         borderColor: "rgba(75,192,192,1)", // Línea roja
         tension: 0.1,
@@ -93,13 +114,20 @@ const GastosComparativa = ({ gastos }) => {
 
   // Renderizar la gráfica
   return (
-    <div className={gastos.length > 0 ? "mt-[20rem] w-100 text-center h-auto md:mt-12" : "mt-16 w-100 text-center h-auto p-8 md:mt-12"}>
+    <div
+      className={
+        gastos.length > 0
+          ? "mt-[20rem] w-100 text-center h-auto md:mt-12"
+          : "mt-16 w-100 text-center h-auto p-8 md:mt-12"
+      }
+    >
       <h2>Comparativa de Gastos Mensuales</h2>
       {gastos.length > 0 ? (
         <Line className="mt-8" data={datos} options={opciones} />
       ) : (
         <p className="text-sm mt-10">
-          Los datos se mostrarán automáticamente en esta página una vez que hayas agregado información o realizado registros en el sistema.
+          Los datos se mostrarán automáticamente en esta página una vez que
+          hayas agregado información o realizado registros en el sistema.
         </p>
       )}
     </div>
@@ -107,5 +135,3 @@ const GastosComparativa = ({ gastos }) => {
 };
 
 export default GastosComparativa;
-
-

@@ -6,7 +6,6 @@ import Loader from "../Utilities/Loader.jsx";
 
 import { useAuth } from "../../contextApi/AuthProvider.jsx";
 
-
 const Login = ({ setuser }) => {
   const { setIsAuthenticated } = useAuth();
 
@@ -19,16 +18,13 @@ const Login = ({ setuser }) => {
   async function hanldeSubmit(e) {
     e.preventDefault();
 
-    if (email === '' || password === '') {
+    if (email === "" || password === "") {
       Swal.fire({
         text: "Todos los campos son obligatorios",
         icon: "error",
       });
       return;
     }
-
-    console.log(email)
-    console.log(password)
 
     const userCredentials = { email, password };
 
@@ -37,10 +33,10 @@ const Login = ({ setuser }) => {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
         method: "POST",
         headers: {
-          "Content-Type":"application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(userCredentials),
-        credentials:"include",
+        credentials: "include",
       });
 
       const result = await response.json();
@@ -73,8 +69,8 @@ const Login = ({ setuser }) => {
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6 text-2xl">
+          <h1 className="text-3xl md:text-5xl font-bold">Login now!</h1>
+          <p className="py-6 text-base  md:text-2xl">
             <span className="font-bold">Budgelty</span> te ayuda a organizar tus
             finanzas al simplificar el seguimiento de ingresos y gastos. Con
             herramientas como gráficos y alertas, puedes identificar hábitos,
@@ -110,7 +106,10 @@ const Login = ({ setuser }) => {
                 className="input input-bordered"
               />
               <label className="label">
-                <Link to={'/forgotPassword'} className="label-text-alt link link-hover">
+                <Link
+                  to={"/forgotPassword"}
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
                 </Link>
               </label>

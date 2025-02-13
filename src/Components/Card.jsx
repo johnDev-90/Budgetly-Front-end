@@ -9,8 +9,6 @@ const Card = ({ gasto, imagenes, index, getGastos }) => {
   const [confirmation, setconfirmation] = useState(false);
   const [categoria, setCategoria] = useState("");
 
-
-
   async function deleteGasto(id) {
     Swal.fire({
       title: "Estas seguro?",
