@@ -70,7 +70,7 @@ const Login = ({ setuser }) => {
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-3xl md:text-5xl font-bold">Login now!</h1>
-          <p className="py-6 text-base  md:text-2xl">
+          <p className="py-6 text-base text-left  md:text-2xl">
             <span className="font-bold">Budgelty</span> te ayuda a organizar tus
             finanzas al simplificar el seguimiento de ingresos y gastos. Con
             herramientas como gráficos y alertas, puedes identificar hábitos,

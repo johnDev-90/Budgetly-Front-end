@@ -72,9 +72,8 @@ const Register = () => {
   }
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content w-full">
-        <div className="card shadow-2xl">
+   
+        <div className="card shadow-2xl md:w-1/3 mx-auto">
           <form
             onSubmit={(e) => hanldeSubmit(e)}
             type="submit"
@@ -153,8 +152,8 @@ const Register = () => {
             </div>
           </form>
         </div>
-      </div>
-    </div>
+     
+
   );
 };
 
