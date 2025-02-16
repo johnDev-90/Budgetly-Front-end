@@ -40,7 +40,7 @@ const SetnewPasswordForm = () => {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/setNewPassword`,
         {
-          method: "PUT",
+          method:"PUT",
           headers: {
             "Content-type": "application/json",
           },
