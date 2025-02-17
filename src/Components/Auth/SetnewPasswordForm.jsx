@@ -5,27 +5,26 @@ import { useNavigate, useLocation } from "react-router-dom";
 const SetnewPasswordForm = () => {
   const [newPasword, setNewPassword] = useState("");
   const [confirmeNewPassword, setConfirmNewPassword] = useState("");
-  const [tokenUrl, setTokenUrl] = useState('')
-
+  const [tokenUrl, setTokenUrl] = useState('');
   const [ismatch, setIsMatch] = useState(false);
+  
   const navigate = useNavigate();
+  const location = useLocation(); // 🔹 Se mueve aquí
 
   useEffect(() => {
     getToken();
-  },[])
+  }, [location]); // 🔹 Se agrega location como dependencia
 
   function getToken() {
-    const location = useLocation();
-  const urlParams = new URLSearchParams(window.location.search);
-  const token = urlParams.get("token");
+    const urlParams = new URLSearchParams(location.search); // 🔹 Se usa location directamente
+    const token = urlParams.get("token");
 
-  console.log("Token extraído:", token);
+    console.log("Token extraído:", token);
     
     if (!token) {
       console.error("Token no encontrado en la URL");
     } else {
-      console.log("Token extraído:", token);
-      setTokenUrl(token)
+      setTokenUrl(token);
     }
   }
 
@@ -40,7 +39,7 @@ const SetnewPasswordForm = () => {
 
     if (newPasword === "") {
       Swal.fire({
-        text: "Debes ingresar un contraseña!",
+        text: "Debes ingresar una contraseña!",
         icon: "error",
       });
     } else if (confirmeNewPassword === "") {
@@ -50,7 +49,7 @@ const SetnewPasswordForm = () => {
       });
     } else if (confirmeNewPassword !== newPasword) {
       Swal.fire({
-        text: "La contraseña no coincide. intenta de nuevo!",
+        text: "La contraseña no coincide. Intenta de nuevo!",
         icon: "error",
       });
       return;
@@ -60,18 +59,18 @@ const SetnewPasswordForm = () => {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/setNewPassword`,
         {
-          method:"PUT",
+          method: "PUT",
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify({ newPasword,tokenUrl}),
+          body: JSON.stringify({ newPasword, tokenUrl }),
           credentials: "include",
-        },
+        }
       );
 
       const result = await response.json();
 
-      console.log(result.token)
+      console.log(result.token);
 
       if (response.ok) {
         Swal.fire({
@@ -135,7 +134,9 @@ const SetnewPasswordForm = () => {
               <span className="label-text">Confirmar contraseña</span>
             </label>
             <input
-              className={`input input-bordered ${ismatch === true ? "border-green-600" : "border-red-500"} `}
+              className={`input input-bordered ${
+                ismatch === true ? "border-green-600" : "border-red-500"
+              } `}
               value={confirmeNewPassword}
               onChange={(e) => setConfirmNewPassword(e.target.value)}
               type="password"
@@ -153,3 +154,4 @@ const SetnewPasswordForm = () => {
 };
 
 export default SetnewPasswordForm;
+
