@@ -1,13 +1,33 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SetnewPasswordForm = () => {
   const [newPasword, setNewPassword] = useState("");
   const [confirmeNewPassword, setConfirmNewPassword] = useState("");
+  const [tokenUrl, setTokenUrl] = useState('')
 
   const [ismatch, setIsMatch] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getToken();
+  },[])
+
+  function getToken() {
+    const location = useLocation();
+  const urlParams = new URLSearchParams(location.search);
+  const token = urlParams.get("token");
+
+  console.log("Token extraído:", token);
+    
+    if (!token) {
+      console.error("Token no encontrado en la URL");
+    } else {
+      console.log("Token extraído:", token);
+      setTokenUrl(token)
+    }
+  }
 
   useEffect(() => {
     (confirmeNewPassword !== "") & (confirmeNewPassword === newPasword)
@@ -44,12 +64,14 @@ const SetnewPasswordForm = () => {
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify({ newPasword }),
+          body: JSON.stringify({ newPasword,tokenUrl}),
           credentials: "include",
         },
       );
 
       const result = await response.json();
+
+      console.log(result.token)
 
       if (response.ok) {
         Swal.fire({
