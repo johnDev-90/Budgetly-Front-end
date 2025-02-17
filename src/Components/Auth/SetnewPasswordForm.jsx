@@ -16,7 +16,7 @@ const SetnewPasswordForm = () => {
 
   function getToken() {
     const location = useLocation();
-  const urlParams = new URLSearchParams(location.search);
+  const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get("token");
 
   console.log("Token extraído:", token);
