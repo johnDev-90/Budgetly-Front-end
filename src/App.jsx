@@ -51,14 +51,7 @@ function App() {
                     </Private>
                   }
                 />
-                <Route
-                  path="/presupuesto"
-                  element={
-                    <Private>
-                      <FormPresupuesto />
-                    </Private>
-                  }
-                />
+                <Route path="/presupuesto"element={<Private> <FormPresupuesto /></Private>}/>
                 <Route
                   path="/dashboard/expenses"
                   element={

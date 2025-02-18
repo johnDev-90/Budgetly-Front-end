@@ -43,10 +43,9 @@ const Private = ({ children }) => {
     }
   }, [setIsAuthenticated, setUser]);
 
-  // ✅ Ejecutar `authenticateUser` solo al montar el componente
   useEffect(() => {
     authenticateUser();
-  }, [authenticateUser]); // Se ejecuta solo si `authenticateUser` cambia (lo que no pasará debido a `useCallback`)
+  }, [authenticateUser]); 
 
   if (isLoading) {
     return <div>Cargando...</div>;

@@ -21,6 +21,7 @@ const Layout = ({ children, user }) => {
           {children}
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
