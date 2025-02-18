@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-// Registrar los componentes de Chart.js
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -44,7 +44,7 @@ const HorizontalBarChart = ({ categoriasTotales }) => {
     }
   }
 
-  // Obtener mes y año de una fecha
+
   const obtenerMesYAnio = (fecha) => {
     const date = new Date(fecha);
     return { mes: date.getMonth(), anio: date.getFullYear() };
@@ -56,7 +56,7 @@ const HorizontalBarChart = ({ categoriasTotales }) => {
   const mesPasado = mesActual === 0 ? 11 : mesActual - 1;
   const anioPasado = mesActual === 0 ? anioActual - 1 : anioActual;
 
-  // Filtrar los gastos por mes y año
+
   const gastosMesActual = gastos.filter((gasto) => {
     const { mes, anio } = obtenerMesYAnio(gasto.created_at);
     return mes === mesActual && anio === anioActual;
@@ -79,7 +79,7 @@ const HorizontalBarChart = ({ categoriasTotales }) => {
   const categoriasActuales = agruparPorCategoria(gastosMesActual);
   const categoriasPasadas = agruparPorCategoria(gastosMesPasado);
 
-  // Preparar datos para el gráfico
+
   const categorias = [
     ...new Set([
       ...Object.keys(categoriasActuales),
@@ -95,23 +95,23 @@ const HorizontalBarChart = ({ categoriasTotales }) => {
   );
 
   const datos = {
-    labels: categorias, // Etiquetas son las categorías
+    labels: categorias, 
     datasets: [
       {
         label: "Gastos Actuales",
-        data: datosActuales, // Datos de categorías actuales
+        data: datosActuales, 
         backgroundColor: "rgba(75, 192, 192, 0.5)",
       },
       {
         label: "Gastos Anteriores",
-        data: datosPasados, // Datos de categorías pasadas
+        data: datosPasados, 
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
   };
 
   const opciones = {
-    indexAxis: "y", // Barras horizontales
+    indexAxis: "y",
     responsive: true,
     plugins: {
       legend: {
@@ -125,23 +125,19 @@ const HorizontalBarChart = ({ categoriasTotales }) => {
   };
 
   return (
-    <div
-      className={
-        categorias.length > 0
-          ? "mt-[5rem] w-full text-center h-[30rem] md:mt-12"
-          : "mt-16 w-full text-center h-[30rem] p-8 md:mt-12"
-      }
-    >
-      <h2>Comparativa de Gastos por Categoría</h2>
+    <div className="flex justify-center items-center w-full mt-20">
+    <div className="w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-xl h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
+      <h2 className="text-center font-bold">Comparativa de Gastos por Categoría</h2>
       {categorias.length > 0 ? (
-        <Bar className="mt-8" data={datos} options={opciones} />
+        <Bar data={datos} options={{ ...opciones, maintainAspectRatio: false }} />
       ) : (
-        <p className="text-sm mt-10">
-          Los datos se mostrarán automáticamente en esta página una vez que
-          hayas agregado información o realizado registros en el sistema.
+        <p className="text-sm mt-10 text-center">
+          Los datos se mostrarán automáticamente en esta página una vez que hayas agregado información o realizado registros en el sistema.
         </p>
       )}
     </div>
+  </div>
+  
   );
 };
 

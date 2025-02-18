@@ -11,7 +11,7 @@ import {
   Legend,
 } from "chart.js";
 
-// Registrar los componentes de Chart.js
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,22 +25,22 @@ ChartJS.register(
 const GastosComparativa = ({ gastos }) => {
   console.log("Gastos originales:", gastos);
 
-  // Función para obtener el mes y el año de una fecha
+  
   const obtenerMesYAnio = (fecha) => {
     const date = new Date(fecha);
-    return { mes: date.getMonth(), anio: date.getFullYear() }; // 0 = enero, 11 = diciembre
+    return { mes: date.getMonth(), anio: date.getFullYear() }; 
   };
 
-  // Obtener el mes y año actuales
+
   const hoy = new Date();
-  const mesActual = hoy.getMonth(); // Mes actual (0 = enero)
+  const mesActual = hoy.getMonth(); 
   const anioActual = hoy.getFullYear();
 
-  // Mes y año anteriores
-  const mesPasado = mesActual === 0 ? 11 : mesActual - 1; // Si es enero, el mes pasado es diciembre
+  
+  const mesPasado = mesActual === 0 ? 11 : mesActual - 1; 
   const anioPasado = mesActual === 0 ? anioActual - 1 : anioActual;
 
-  // Filtrar gastos por mes y año
+
   const gastosMesActual = gastos.filter((gasto) => {
     const { mes, anio } = obtenerMesYAnio(gasto.created_at);
     return mes === mesActual && anio === anioActual;
@@ -54,7 +54,7 @@ const GastosComparativa = ({ gastos }) => {
   console.log("Gastos mes actual (febrero):", gastosMesActual);
   console.log("Gastos mes pasado (enero):", gastosMesPasado);
 
-  // Calcular gastos totales para el mes
+ 
   const calcularTotalGastos = (gastos) =>
     gastos.reduce((total, gasto) => total + parseFloat(gasto.monto), 0);
 
@@ -63,7 +63,7 @@ const GastosComparativa = ({ gastos }) => {
 
   console.log(totalGastosMesActual);
 
-  // Datos para la gráfica
+  
   const datos = {
     labels: [
       "Enero",
@@ -78,26 +78,26 @@ const GastosComparativa = ({ gastos }) => {
       "Octubre",
       "Noviembre",
       "Diciembre",
-    ], // Etiquetas de los meses
+    ], 
     datasets: [
       {
         label: "Gastos Mes pasado",
-        data: [0, totalGastosMesPasado], // Solo se registra en febrero
+        data: [0, totalGastosMesPasado], 
         fill: false,
-        borderColor: "rgba(255,99,132,1)", // Línea verde
+        borderColor: "rgba(255,99,132,1)", 
         tension: 0.1,
       },
       {
         label: "Gastos mMs Actual",
-        data: [0, totalGastosMesActual], // Solo se registra en enero
+        data: [0, totalGastosMesActual],
         fill: false,
-        borderColor: "rgba(75,192,192,1)", // Línea roja
+        borderColor: "rgba(75,192,192,1)", 
         tension: 0.1,
       },
     ],
   };
 
-  // Opciones para la gráfica
+ 
   const opciones = {
     responsive: true,
     plugins: {
@@ -112,25 +112,20 @@ const GastosComparativa = ({ gastos }) => {
     },
   };
 
-  // Renderizar la gráfica
+
   return (
-    <div
-      className={
-        gastos.length > 0
-          ? "mt-[20rem] w-100 text-center h-auto md:mt-12"
-          : "mt-16 w-100 text-center h-auto p-8 md:mt-12"
-      }
-    >
-      <h2>Comparativa de Gastos Mensuales</h2>
+    <div className="flex justify-center items-center w-full mt-12">
+    <div className="w-full max-w-xs sm:max-w-sm md:max-w-lg lg:max-w-xl h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
+      <h2 className="text-center font-bold">Comparativa de Gastos Mensuales</h2>
       {gastos.length > 0 ? (
-        <Line className="mt-8" data={datos} options={opciones} />
+        <Line data={datos} options={{ ...opciones, maintainAspectRatio: false }} />
       ) : (
-        <p className="text-sm mt-10">
-          Los datos se mostrarán automáticamente en esta página una vez que
-          hayas agregado información o realizado registros en el sistema.
+        <p className="text-sm mt-10 text-center font-bold">
+          Los datos se mostrarán automáticamente en esta página una vez que hayas agregado información o realizado registros en el sistema.
         </p>
       )}
     </div>
+  </div>
   );
 };
 

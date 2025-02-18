@@ -97,7 +97,7 @@ const Profile = () => {
     <div className="absolute w-full md:relative md:flex items-center justify-center min-h-screen">
       <div className="w-full max-w-lg shadow-lg rounded-lg p-8">
         <form onSubmit={(e) => handleSubmit(e)} className="space-y-6">
-          {/* Título */}
+
           <div className="text-center">
             <p className="font-bold text-lg mb-4">Foto de perfil</p>
             <div className="flex flex-col md:flex-row items-center gap-4">
@@ -109,7 +109,7 @@ const Profile = () => {
                 alt="imagen de perfil"
               />
               <div className="flex gap-4">
-                {/* Botón que activa el input file */}
+            
                 <button
                   type="button"
                   className="btn btn-info p-2"

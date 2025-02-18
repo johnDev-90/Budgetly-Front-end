@@ -79,7 +79,7 @@ const Column2 = ({ setCategoriasTotales }) => {
 
   return (
     <div className="text-center mt-12 md:mt-12">
-      <h2 className="text-center text-xl">Gasto por categoria</h2>
+      <h2 className="text-center text-xl font-bold">Gasto por categoria</h2>
       <div
         className={
           groups.length

@@ -9,14 +9,14 @@ const SetnewPasswordForm = () => {
   const [ismatch, setIsMatch] = useState(false);
   
   const navigate = useNavigate();
-  const location = useLocation(); // 🔹 Se mueve aquí
+  const location = useLocation(); 
 
   useEffect(() => {
     getToken();
-  }, [location]); // 🔹 Se agrega location como dependencia
+  }, [location]); // 
 
   function getToken() {
-    const urlParams = new URLSearchParams(location.search); // 🔹 Se usa location directamente
+    const urlParams = new URLSearchParams(location.search); 
     const token = urlParams.get("token");
 
     console.log("Token extraído:", token);
@@ -70,7 +70,6 @@ const SetnewPasswordForm = () => {
 
       const result = await response.json();
 
-      console.log(result.token);
 
       if (response.ok) {
         Swal.fire({

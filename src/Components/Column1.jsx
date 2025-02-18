@@ -200,7 +200,7 @@ const ColumncircularBar = ({ data, totalGastado }) => {
                     ),
                   )
                 ) : (
-                  <h1>No hay transacciones de hoy</h1>
+                  <h1 className="font-bold">No hay transacciones de hoy</h1>
                 )}
               </div>
             </div>
