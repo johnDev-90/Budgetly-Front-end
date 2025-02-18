@@ -20,6 +20,8 @@ Budgetly is an intuitive expense tracking application that allows users to creat
 
 📱 Responsive Design – Fully optimized for mobile and desktop devices.
 
+📂 Excel Reports – Generate transaction reports and expense lists in Excel format.
+
 🛠️ Technologies Used
 
 Frontend: React.js, Tailwind CSS
@@ -39,6 +41,9 @@ Hosting: Vercel (Frontend), Heroku (DB)
 👥 Preview
 
 ![image](https://github.com/user-attachments/assets/88c3defe-7ab8-4aee-aa58-5e46945c47eb)
+
+![image](https://github.com/user-attachments/assets/37bdd843-6545-4922-a3f2-e4569b36f28b)
+
 
 
 
@@ -65,6 +70,8 @@ Budgetly es una aplicación intuitiva de seguimiento de gastos que permite a los
 
 📱 Diseño Responsive – Totalmente optimizado para dispositivos móviles y de escritorio.
 
+📂 Reportes en Excel – Genera reportes de transacciones y listados de gastos en formato Excel.
+
 🛠️ Tecnologías Utilizadas
 
 Frontend: React.js, Tailwind CSS
@@ -84,6 +91,9 @@ Hosting: Vercel (Frontend), Heroku (DB)
 👥 Vista Previa
 
 ![image](https://github.com/user-attachments/assets/e341f35c-97fd-48d9-8459-b32482509140)
+
+![image](https://github.com/user-attachments/assets/a4f69dea-2484-4b8f-9141-2a2fd7fef9b8)
+
 
 
 
