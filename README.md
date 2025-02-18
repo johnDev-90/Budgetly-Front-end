@@ -1,8 +1,20 @@
-# React + Vite
+🚀 Budgetly – Tu Aliado en la Gestión de Gastos
+📊 Budgetly es una aplicación intuitiva para administrar tus gastos de manera eficiente. Con una interfaz moderna y estadísticas visuales, llevar el control de tus finanzas nunca fue tan fácil.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌟 Características
+✅ Gestión Completa de Gastos – Crea, edita y elimina gastos con facilidad.
+📈 Gráficos Interactivos – Visualiza tus gastos por categorías y meses.
+🔐 Autenticación Segura – Inicio de sesión con JWT.
+☁️ Almacenamiento en la Nube – Sube imágenes de tus recibos con AWS S3.
+⚡ Rápido y Escalable – Backend con Node.js y Express, base de datos en MySQL (desplegado en Heroku).
+🌎 Accesible Desde Cualquier Lugar – Frontend desplegado en Vercel.
 
-Currently, two official plugins are available:
+🛠️ Tecnologías Utilizadas
+Frontend: React.js, Tailwind CSS
+Backend: Node.js, Express
+Base de Datos: MySQL (Heroku)
+Autenticación: JSON Web Tokens (JWT)
+Almacenamiento de Imágenes: AWS S3
+Hosting: Vercel (Frontend), Heroku (DB)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🎥 Vista Previa
