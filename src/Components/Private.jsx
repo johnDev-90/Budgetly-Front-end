@@ -9,7 +9,6 @@ const Private = ({ children }) => {
   const {setUser } = useUser();
   const [isLoading, setIsLoading] = useState(true);
 
-  // ✅ Memorizar la función para que no se recree en cada render
   const authenticateUser = useCallback(async () => {
     try {
       const response = await fetch(
