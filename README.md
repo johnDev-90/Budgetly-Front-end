@@ -20,7 +20,8 @@ Budgetly is a powerful expense tracking application that allows users to manage 
 - **Hosting:** Vercel (Frontend), Heroku (Database)
 
 ## 👥 Preview
-![Preview](https://raw.githubusercontent.com/your-username/Budgetly-Front-end/master/cliente/assets/dashboardFull.png)
+![image](https://github.com/user-attachments/assets/3816f300-9da6-4f26-ab7b-25e64663f5d3)
+
 
 ---
 
