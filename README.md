@@ -18,3 +18,5 @@ Almacenamiento de Imágenes: AWS S3
 Hosting: Vercel (Frontend), Heroku (DB)
 
 🎥 Vista Previa
+![Vista Previa](cliente/public/dashboardFull.png)
+
