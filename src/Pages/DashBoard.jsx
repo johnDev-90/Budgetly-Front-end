@@ -80,11 +80,17 @@ const DashBoard = ({}) => {
 
   return (
     <div className="md:grid grid-cols-3 h-screen gap-20">
-      <ColumncircularBar data={data} totalGastado={totalGastado} />
-      <Column2 setCategoriasTotales={setCategoriasTotales} />
+  <div className="w-full h-full">
+    <ColumncircularBar data={data} totalGastado={totalGastado} />
+  </div>
+  <div className="w-full h-full">
+    <Column2 setCategoriasTotales={setCategoriasTotales} />
+  </div>
+  <div className="w-full h-full">
+    <Columna3 gastos={gastos} categoriasTotales={categoriasTotales} />
+  </div>
+</div>
 
-      <Columna3 gastos={gastos} categoriasTotales={categoriasTotales} />
-    </div>
   );
 };
 

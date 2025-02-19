@@ -23,7 +23,7 @@ ChartJS.register(
 );
 
 const GastosComparativa = ({ gastos }) => {
-  console.log("Gastos originales:", gastos);
+ 
 
   
   const obtenerMesYAnio = (fecha) => {
@@ -51,8 +51,7 @@ const GastosComparativa = ({ gastos }) => {
     return mes === mesPasado && anio === anioPasado;
   });
 
-  console.log("Gastos mes actual (febrero):", gastosMesActual);
-  console.log("Gastos mes pasado (enero):", gastosMesPasado);
+
 
  
   const calcularTotalGastos = (gastos) =>
@@ -61,7 +60,7 @@ const GastosComparativa = ({ gastos }) => {
   const totalGastosMesActual = calcularTotalGastos(gastosMesActual);
   const totalGastosMesPasado = calcularTotalGastos(gastosMesPasado);
 
-  console.log(totalGastosMesActual);
+
 
   
   const datos = {

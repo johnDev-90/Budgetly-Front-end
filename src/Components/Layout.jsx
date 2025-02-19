@@ -5,9 +5,6 @@ import Footer from "./Footer.jsx";
 import { useAuth } from "../contextApi/AuthProvider.jsx";
 import { useLocation } from "react-router-dom";
 
-import { useState, useEffect } from "react";
-
-import { CircularProgressbar } from "react-circular-progressbar";
 const Layout = ({ children, user }) => {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
@@ -21,7 +18,7 @@ const Layout = ({ children, user }) => {
           {children}
         </div>
       </main>
-      <Footer />
+
     </div>
   );
 };
